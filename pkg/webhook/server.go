@@ -266,6 +266,7 @@ func (s *Server) StartedChecker() healthz.Checker {
 
 		d := &net.Dialer{Timeout: 10 * time.Second}
 		conn, err := tls.DialWithDialer(d, "tcp", net.JoinHostPort(s.Host, strconv.Itoa(s.Port)), config)
+		fmt.Println("addr is: ", net.JoinHostPort(s.Host, strconv.Itoa(s.Port)))
 		if err != nil {
 			return fmt.Errorf("webhook server is not reachable: %w", err)
 		}
